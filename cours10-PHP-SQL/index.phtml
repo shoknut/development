@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Handlee" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>PHP-SQL : Liste des commandes</title>
+</head>
+<body>
+    <header>
+        <h1>Bon de commandes</h1>
+    </header>
+    <main>
+        <h2>Liste des commandes</h2>
+        <table>
+            <tr>
+                <th>Commande</th>
+                <th>Date de la commande</th>
+                <th>Date de livraison</th>
+                <th>Statuts</th>
+            </tr>
+
+                <?php foreach($orders as $order): ?>
+            <tr>
+                <td><a href="commandeDetail.php?numeroCommande=<?=$order["orderNumber"]?>"><?=$order["orderNumber"]?></a></td>
+                <td><?=$order["orderDate"]?></td>
+                <td><?=$order["shippedDate"]?></td>
+                <td><?=$order["status"]?></td>
+            </tr>
+                <?php endforeach; ?>
+
+        </table>
+    </main>
+</body>
+</html>

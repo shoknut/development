@@ -1,0 +1,73 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    width: 90%;
+    margin: 0 auto;
+}
+
+a{
+    text-decoration: none;
+    color: #EF4036;
+}
+
+a:hover{
+    text-decoration: none;
+
+}
+
+button a {
+    color: black;
+
+}
+
+h1, caption{
+    font-family: 'Oleo Script Swash Caps', cursive;
+    text-align: center;
+    color: #EF4036;
+}
+
+footer>ul>li{
+    list-style-type: none;
+    display: inline-block;
+
+}
+small{
+    display: block;
+}
+
+button{
+    padding:1em;
+    margin-bottom: 1em;
+    border-radius: 10px;
+}
+
+.signup {
+    background-color: forestgreen;
+}
+
+.cancel {
+    background-color: red;
+}
+
+.login {
+    background-color: dodgerblue;
+}
+
+small>i{
+    color: red;
+}
+
+footer>ul{
+    text-align: center;
+}
+
+main>button{
+    position: relative;
+    left: 80%;
+}
+
+td{
+    text-align: center;
+}

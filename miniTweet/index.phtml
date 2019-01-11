@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<title>Mini Tweet</title>
+</head>
+<body>
+	<h1><i class="fab fa-twitter"></i> Mini Tweet</h1>
+	<form action="main.php?action=add" method="post" id="formSend">
+		<label for="pseudo">Pseudo : </label>
+		<input type="text" name="pseudo" id="pseudo" placeholder="Votre Pseudo" value="pseudo">
+
+		<label for="content">Message : </label>
+		<textarea name="content" id="content" cols="30" rows="10"></textarea>
+
+		<button type="submit" id="add">Send Tweet</button>
+	</form>
+
+	<hr>
+
+	<div id="showTweet" name="showTweet">
+
+	<?php 
+		foreach($tweets->getAllTweet() as $tweet):
+	?>
+			<p><small><?=$tweet->getDate()?></small></p>
+			<h3 style="color: red;"><?=$tweet->getPseudo()?></h3>
+			<p><?=$tweet->getContent()?></p>
+			<p><a data-id="<?= $tweet->getId() ?>" class="editButton" href="#"><i class="fas fa-edit"></i></a>
+			<a href="main.php?action='delete&id<?=$tweet->getId()?>'"><i class="fas fa-trash-alt"></i></a></p>
+
+	<?php endforeach; ?>
+
+
+	</div>
+	
+	<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<form action="<?= $requestUrl ?>/book" method="POST">
+    <select name="day">
+        <?php for($i = 1; $i <= 31; $i++): ?>
+            <option value="<?= $i ?>"><?= $i ?></option>
+        <?php endfor; ?>
+    </select>
+    <select name="month">
+        <option value="1">Janvier</option>
+        <option value="2">Fevrier</option>
+        <option value="3">Mars</option>
+        <option value="4">Avril</option>
+        <option value="5">Mai</option>
+        <option value="6">Juin</option>
+        <option value="7">Juillet</option>
+        <option value="8">Août</option>
+        <option value="9">Septembre</option>
+        <option value="10">Octobre</option>
+        <option value="11">Novembre</option>
+        <option value="12">Decembre</option>
+    </select>
+    <select name="year">
+        <?php for($year = 2018; $year <= 2020; $year++): ?>
+            <option value="<?= $year ?>"><?= $year ?></option>
+        <?php endfor; ?>
+    </select>
+
+    <select name="hours">
+        <?php for($i = 1; $i <= 24; $i++): ?>
+            <option value="<?= $i ?>"><?= $i ?></option>
+        <?php endfor; ?>
+    </select>
+    <select name="minutes">
+        <?php for($i = 0; $i <= 59; $i++): ?>
+            <option value="<?= $i ?>"><?= $i ?></option>
+        <?php endfor; ?>
+    </select>
+    <select name="couvert">
+        <?php for($i = 1; $i <= 8; $i++): ?>
+            <option value="<?= $i ?>"><?= $i ?></option>
+        <?php endfor; ?>
+    </select>
+    <input type="submit">
+</form>

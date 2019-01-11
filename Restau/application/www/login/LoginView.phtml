@@ -1,0 +1,30 @@
+<!--Page de Login -->
+
+<form action="<?= $requestUrl ?>/login" method="post">
+    <h2><i class="fas fa-lock"></i> Se connecter avec un compte utilisateur</h2>
+
+        <fieldset>
+            <legend><i class="fas fa-lock"></i> Information d'authentification</legend>
+            <ul>
+                <li>
+                    <label for="mail">Adresse Mail</label>
+                    <input type="text" name="mail">
+                </li>
+                <li>
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password">
+                </li>
+            </ul>
+        </fieldset>
+<button type="submit" class="login">Connexion</button>
+
+<button type="submit" class="cancel">Annuler</button>
+
+ <?php if(isset($erreur)): ?>
+     <?=$erreur;?>
+
+ <?php endif; ?>
+
+
+</form>
+

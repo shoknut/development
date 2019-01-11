@@ -1,0 +1,65 @@
+<!-- création du formulaire de réservation -->
+
+<form action="<?=$requestUrl?>/booking" method="post">
+    <h2><i class="fas fa-utensils"></i> Réservation d'une table</h2>
+    <fieldset>
+
+        <legend>Informations</legend>
+        <label for="bookDate">Date de réservation : </label>
+        <select id="day" name="day">
+            <?php for($day = 1; $day <= 31; $day++): ?>
+                <option value="<?= $day ?>"><?= $day ?></option>
+            <?php endfor ?>
+
+        </select>
+        <span>/</span>
+        <select name="month">
+            <option value="1">Janvier</option>
+            <option value="2">Février</option>
+            <option value="3">Mars</option>
+            <option value="4">Avril</option>
+            <option value="5">Mai</option>
+            <option value="6">Juin</option>
+            <option value="7">Juillet</option>
+            <option value="8">Août</option>
+            <option value="9">Septembre</option>
+            <option value="10">Octobre</option>
+            <option value="11">Novembre</option>
+            <option value="12">Décembre</option>
+        </select>
+        <span>/</span>
+        <select name="year">
+            <?php for($year = date("Y"); $year < date("Y")+5; $year++): ?>
+                <option value="<?= $year ?>"><?= $year ?></option>
+            <?php endfor ?>
+        </select>
+        à
+        <select name="hour" id="hour">
+
+            <?php for($hour = date("H"); $hour < 25; $hour++): ?>
+                <option value="<?=$hour?>"><?=$hour?></option>
+            <?php endfor;?>
+        </select>
+        :
+        <select name="minutes" id="minutes">
+
+            <?php for($minutes = 0; $minutes < 60; $minutes++): ?>
+                <option value="<?=$minutes?>"><?=$minutes?></option>
+            <?php endfor;?>
+        </select>
+        <p>
+            <label for="people">Nombre de couverts :</label>
+            <select name="nb" id="nb">
+                <?php for($nb = 1; $nb <= 20; $nb++): ?>
+                    <option value="<?= $nb ?>"><?= $nb ?></option>
+                <?php endfor ?>
+            </select>
+        </p>
+    </fieldset>
+    <button type="submit" class="booking">Réserver</button>
+    <button type="submit" class="cancel">Annuler</button>
+
+</form>
+
+
+

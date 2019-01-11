@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript - Carrousel</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/slider.css">
+</head>
+<body>
+	<div class="container">
+	<!-- HEADER -->
+		<header>
+			<h1>Sliders, les mondes parallèles ;-)</h1>
+			<a href="#" id="toolbar-toggle"><i id="arrow" class="fas fa-arrow-up"></i> Barre d'outils</a>
+			<nav class="toolbar">
+				<button type="button" id="slider-previous"><i class="fas fa-backward"></i></button>
+				<button type="button" id="slider-toggle"><i class="fas fa-play"></i></i></button>
+				<button type="button" id="slider-next"><i class="fas fa-forward"></i></button>
+				<button type="button" id="slider-random"><i class="fas fa-random"></i></button>
+			</nav>
+		</header>
+	<!-- MAIN -->
+		<main>
+			<figure class="slider" id="slider">
+				<img id="image" src="images/1.jpg" alt="slider-1"> 
+				<figcaption class="figcaption">Street Art</figcaption>
+			</figure>
+		</main>
+	</div>
+	<script src="js/slider.js"></script>
+</body>
+</html>

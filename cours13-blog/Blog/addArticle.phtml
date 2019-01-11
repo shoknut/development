@@ -1,0 +1,19 @@
+<html>
+<body>
+	<form action="addArticle.php" method="POST">
+		<input type="text" name="titre">
+		<textarea name="contenu"> </textarea>
+		<select name="author">
+			<?php foreach($authors as $author):?>
+				<option value="<?= $author["Id"]; ?>"><?= $author["FirstName"];?></option>
+			<?php endforeach ;?>
+		</select>
+		<select name="category">
+		<?php foreach($categories as $category):?>
+				<option value="<?= $category["Id"]; ?>"><?= $category["Name"];?></option>
+			<?php endforeach ;?>
+		</select>
+		<input type="submit" value="Enregistrer">
+	</form>
+</body>
+</html>

@@ -1,0 +1,71 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	width: 1300px;
+	margin: 0 auto;
+	background-color: #e5d4eb;
+	font-family: 'Rancho', cursive;
+	font-size: 20px;
+}
+
+.rotate-45-right {
+    transform: rotate(45deg);
+}
+
+
+
+ul li {
+	list-style-type: none;
+	padding: 0.3em;
+}
+
+.button {
+	border-bottom: 1px solid red;
+	padding-bottom: 1em;
+}
+
+#save {
+	padding: 0.5em;
+	border-radius: 5px;
+	background-image: linear-gradient(30deg,pink,white,red);
+}
+
+#contact-form {
+	display: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+h1{
+	color: #00bad4;
+	font-family: "Cookie";
+	font-size: 3em;
+}
+
+fieldset {
+	border-radius: 5px;
+	width: 30%;
+	position: relative;
+	background-image: linear-gradient(45deg,#e5d4eb,#ff8b9a,#c3a7db);
+	color: white;
+
+}
+
+legend{
+	font-size: 1.5em;
+}
+
+select, input {
+	position: absolute;
+	left: 100px;
+	border-radius: 5px;
+}
+
+select{
+	padding: 0.2em;
+	background-color: cyan;
+}

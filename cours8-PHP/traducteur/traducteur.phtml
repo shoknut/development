@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
+    <title>Traducteur</title>
+    <style>
+        main {
+            width:1300px;
+            margin:0 auto;
+        }
+        h1 {
+            color: firebrick;
+            font-family: 'Sacramento', cursive;
+            font-size:50px;
+        }
+        li {
+            padding: 1em;
+        }
+        li #word {
+            width:20%;
+            padding:1em;
+        }
+        select{
+            padding:1em;
+            margin-left:5em;
+            border-radius:5px;
+            background-image:linear-gradient(45deg,pink,white,red);
+        }
+        #traduire{
+            padding: 1em;
+            margin-left:5em;
+        }
+        .trad{
+            padding:0.5em;
+            border-radius:5px;
+            background-image:linear-gradient(30deg, skyblue,white,blue);
+        }
+    </style>
+</head>
+<body>
+<main>
+    <h1>Outil de traduction</h1>
+    <form action="index.php" method="post">
+        <ul style="list-style-type: none;">
+            <li>
+                <label for="word">
+                    Entrer le mot à traduire / Write your word to translate :
+                </label>
+                <input type="text" placeholder="Mot à traduire / Word to translate" id="word" name="word">
+            </li>
+            <select name="translate" id="translate">
+                <option value="Anglais-Français">Anglais-Français</option>
+                <option value="Français-Anglais">Français-Anglais</option>
+            </select>
+            <li id="traduire">
+                <input class="trad" type="submit" value="Traduire">
+            </li>
+        </ul>
+    </form>
+
+</main>
+
+</body>
+</html>

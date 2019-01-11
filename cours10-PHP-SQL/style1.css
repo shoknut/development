@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+
+}
+
+body {
+    width: 1300px;
+    margin: 0 auto;
+    padding-bottom: 5em;
+}
+
+.cde {
+    font-family: "Courgette";
+    color: #00948a;
+}
+
+.accueil, .accueil a {
+
+    font-family: "Handlee";
+    color: firebrick;
+    text-decoration: none;
+}
+
+.societe, .client, h3 {
+    font-family: "Handlee";
+    text-align: right;
+}
+
+.contactInfo {
+    border-bottom:1px solid lightgrey;
+    margin-bottom:1em;
+}
+
+.boncde {
+    text-align: center;
+}
+
+table {
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td,th {
+
+    padding: 8px;
+}
+
+tbody {
+    background: #c1f4f0;
+
+}
+
+tbody:nth-child(even) {
+    background: #82cec8;
+}
+
+tbody:hover {
+    background: #23eddc;
+}

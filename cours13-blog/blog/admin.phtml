@@ -1,0 +1,47 @@
+<?php
+
+include "header.php";
+
+?>
+	<main>
+		<h1><i class="fas fa-cogs"></i> Panneau d'administration</h1>
+		<p><a href="newArticle.php">Rédiger un nouvel article</a></p>
+		<p><a href="addAuthor.php">Ajouter un nouvel auteur</a></p>
+		<p><a href="addCategory.php">Ajouter une nouvelle catégorie</a></p>
+		<img src="images/portrait.jpg" alt="portrait">
+		<h2 style="text-align: center;">Liste des articles</h2>
+		
+		<table>
+			<thead>
+				<tr>
+					<th>
+						<h3>Titre</h3>
+					</th>
+					<th>
+						<h3>Articles</h3>
+					</th>
+					<th>
+						<h3>Auteur</h3>
+					</th>
+					<th>
+						<h3>Catégorie</h3>
+					</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach($lists as $list): ?>
+					<tr>
+						<td><a href="article.php?numeroArticle=<?=$list["id"]?>"><?=$list["title"]?></a></td>
+						<td><?=substr($list["content"],0,10)?></td>
+						<td><?=$list["firstName"]." ".$list["lastName"]?></td>
+						<td><?=$list["name"]?></td>
+						<td>
+							<a href="update.php?numeroArticle=<?=$list["id"]?>"><i class="fas fa-pencil-alt"></i></a> 
+							<a href="delete.php?numeroArticle=<?=$list["id"]?>"><i class="fas fa-trash-alt"></i></a>
+						</td>
+					</tr>
+				<?php endforeach;?>
+			</tbody>
+		</table>
+	</main>
+

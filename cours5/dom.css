@@ -1,0 +1,23 @@
+.rectangle {
+	height: 300px;
+	width: 400px;
+	background-color: royalblue;
+	border-radius: 8px;
+}
+
+.rectangleModified {
+	height: 300px;
+	width: 400px;
+	background-color: firebrick;
+	border-radius: 8px;
+}
+
+#carre {
+	height: 200px;
+	width: 200px;
+	background-color: grey;
+}
+
+.hide {
+	display: none;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+    <link href="https://fonts.googleapis.com/css?family=Merienda|Vibur" rel="stylesheet">
+    <!-- Librairie Font Awsome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Librairie jQuery -->
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<header>
+    <h1><i class="fa fa-flask"></i> Exercice AJAX - Récupération des données</h1>
+</header>
+
+<main>
+    <section id="target">
+        <em>Résultats...</em>
+    </section>
+
+    <form>
+        <fieldset>
+            <legend><i class="fa fa-question-circle"></i> Votre choix</legend>
+            <ul>
+                <li>
+                    <input type="radio" name="btn-radio" value="htmlContent"> Récupérer un contenu HTML du serveur
+                </li>
+                <li><input type="radio" name="btn-radio" value="jsonContent"> Récupérer un contenu JSON du serveur
+                   </li>
+                <li>
+                    <input type="radio" name="btn-radio" value="movieContent"> Récupérer les films
+                </li>
+                <li>
+                    <input type="radio" name="btn-radio" value="products"> Récupérer tous les produits de la Classic Model
+                </li>
+
+                <li>
+                    <button type="button" id="run">Exécuter</button>
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset>
+            <legend>Search Bar</legend>
+            <ul>
+                <li>
+                    <input type="text" id="autocompletion" name="btn-radio" placeholder="Search">
+                </li>
+               
+            </ul>
+        </fieldset>
+    </form>
+</main>
+
+<!-- Code principal du projet -->
+<script src="index.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!-- Page de commande -->
+
+
+
+    <h2><i class="fas fa-shopping-cart"></i> Passer une commande</h2>
+    <fieldset>
+
+        <legend>Ajouter un article</legend>
+        <label for="product">Produit : </label>
+        <select id="product" name="product">
+            <option>Sélectionner le repas</option>
+            <?php foreach($meals as $meal) :?>
+                <option value="<?= $meal["id"] ?>"><?= $meal["Name"] ?></option>
+            <?php endforeach; ?>
+        </select>
+        <div id="showMeal">
+
+
+        </div>
+
+        <label for="quantity" >Quantité</label>
+        <input id="quantity" type="text">
+
+       <p><button type="button" class="add">Ajouter</button></p>
+    </fieldset>
+
+    <fieldset>
+        <legend>Récapitulatif de la commande</legend>
+        <table id="table" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>Quantité</th>
+                    <th>Produit</th>
+                    <th>Prix unitaire</th>
+                    <th>Prix total</th>
+                </tr>
+            </thead>
+            <tbody id="cart">
+
+            </tbody>
+        </table>
+
+    </fieldset>
+
+
+
+<button class="valider">Valider la commande</button>
+<button type="submit" class="cancel">Annuler</button>
+
+
+

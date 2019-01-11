@@ -1,0 +1,20 @@
+<h3><?= $_SESSION["firstName"]." ".$_SESSION["LastName"] ?></h3>
+<h3><?= $_SESSION["Address"]?></h3>
+<h3><?= $_SESSION["City"]?></h3>
+<h3><?= $_SESSION["Phone"]?></h3>
+
+
+<table class="generic-table meal-list">
+    <caption>Carte du restaurant</caption>
+    <tbody>
+    <?php foreach($commande as $meal):  ?>
+        <td><?= $meal["Name"] ?></td>
+        <td><?= $meal["Description"] ?></td>
+        <td><img src="<?= $wwwUrl ?>/images/meals/<?= $meal["Photo"] ?>" /></td>
+        <td><?= $meal["SalePrice"] ?></td>
+    <?php endforeach; ?>
+    <td>HT : <?= $commande[0]["TotalAmount"] ?></td>
+    <td>TVA : <?= $commande[0]["TotalAmount"]*0.2 ?></td>
+    <td>TTC : <?= $commande[0]["TotalAmount"]*1.2 ?></td>
+    </tbody>
+</table>

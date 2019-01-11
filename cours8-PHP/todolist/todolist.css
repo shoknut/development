@@ -1,0 +1,60 @@
+body {
+	background-color: #264a55;
+}
+
+.container {
+	width: 1300px;
+	margin: 0 auto;
+	background-color: #d8ffff;
+	padding: 1em;
+	border-radius: 5px;
+}
+
+p {
+	font-family: 'Allan', cursive;
+}
+
+
+h1{
+	color: firebrick;
+	font-family: 'Charmonman', cursive;
+	text-align: center;
+}
+
+ul li {
+	list-style-type: none;
+	padding: 0.5em;
+	text-align: center;
+}
+
+ul .delete, ul .add {
+	text-align: left;
+}
+
+button, .supp {
+	padding: 1em;
+    background-image: linear-gradient(30deg, cyan, white, skyblue);
+    border-radius: 1em;
+    margin-bottom: 1em;
+    width: 15%;
+}
+
+.describe {
+	display: flex;
+	justify-content: center;
+}
+
+#date {
+	padding: 0.2em;
+	background-color: cyan;
+	border-radius: 2px;
+}
+
+fieldset {
+	border-radius: 5px;
+}
+
+
+.hide {
+	display: none;
+}

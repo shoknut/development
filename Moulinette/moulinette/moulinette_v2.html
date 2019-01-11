@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Moulinette</title>
+	<meta charset="utf-8">
+	<style>
+		body{
+			background: #bdc3c7;
+			margin: 0;
+			padding: 10px;
+			font-family: "Arial";
+		}
+		section{
+			border: 1px solid black;
+			padding: 10px;
+			margin: 0 auto;
+			margin-bottom: 10px;
+			background: #ecf0f1;
+			max-width: 1000px;
+		}
+		section h2, section h3{
+			margin-top: 0;
+		}
+
+		section h3{
+			margin-bottom: 0;
+		}	
+			
+		section i{
+			color: #2980b9;
+			font-weight: bold;
+		}
+		
+		section p:last-child{
+			margin-bottom: 0;
+		}
+
+		section p.enonce{
+			margin-bottom: 0;
+			font-size: 18px;
+			line-height: 30px;
+			letter-spacing: 0rem;
+		}
+		
+		section p.enonce + p{
+			border-bottom: 1px solid black;
+			padding-bottom: 1em;
+		}
+		
+		section h3 + p{
+			margin-top : 0;
+		}
+
+		section p.success:before, section p.error:before{
+			font-size: 30px;
+			margin-right: 10px;
+			vertical-align: middle;
+			margin-left: 5px;
+		}
+		
+		section a{
+			text-decoration: none;
+			color: #27ae60;
+		}
+	
+		section a:hover{
+			color: #2ecc71;
+		}
+
+		section p.success:before{
+			content: "✔";
+			color: #27ae60;
+		}
+		
+		section p.error, section p.success{
+			line-height: 30px;
+		}
+		
+		section p.error{
+			background: #e74c3c;
+			padding-left: 40px;
+			position: relative;
+		}
+
+		section p.error:before{
+			content: "✖";
+			color: #c0392b;
+			position: absolute;
+			left: 0;
+			top: 50%;
+			margin-top: -15px;
+		}
+	</style>
+	<script type="text/javascript" src="ex.js"></script>
+</head>
+<body>
+	<section>
+		<h1>La Moulinette</h1>
+		<p class="enonce">Les réponses aux exercices doivent être mise dans un fichier <i>ex.js</i> enregistré au même niveau de la Moulinette.</p>
+	</section>
+	<script type="text/javascript">
+		(function(document, window){
+
+			var stop = false;
+			var exNb = 0;
+
+			function log(enonce, exname){
+				var sec = document.createElement('section'); 
+				var h2 	= document.createElement('h2');
+				var p 	= document.createElement('p');
+
+				h2.innerHTML = "Exercice " + exNb + " - " + exname;
+				p.innerHTML = enonce;
+				p.classList.add('enonce');
+
+				sec.appendChild(h2);
+				sec.appendChild(p);
+				document.body.prepend(sec);
+
+				return sec;
+			}
+
+			function logLine(parent, text, elt = 'p'){
+				var elt	= document.createElement(elt);
+				elt.innerHTML = text;
+
+				parent.appendChild(elt);
+			}
+
+			function logResult(parent, text, success){
+				var className = success ? 'success' : 'error';
+
+				var elt	= document.createElement('p');
+				elt.innerHTML = text;
+				elt.classList.add(className);
+
+				parent.appendChild(elt);
+			}
+
+			function testIt(data){
+				if( stop ){
+					return;
+				}
+
+				exNb++;
+				var currentBloc = log(data.enonce, data.exname);
+
+				var f = window[data.fname];
+
+				if( typeof(f) == "function" ){
+					logResult(currentBloc, "La fonction <i>"+ data.fname +"</i> a été trouvée.", true);
+				}else{
+					logResult(currentBloc, "La fonction <i>"+ data.fname +"</i> n'a pas été trouvée.", false);
+					stop = true;
+					return;
+				}
+
+				for(let i = 0; i < data.tests.length; i++){
+					var res = window[data.fname].apply( this, data.tests[i].in);
+					logLine(currentBloc, "Test " + (i+1), 'h3');
+					
+						if( res && res.toString() == data.tests[i].out.toString() ){
+							logResult(currentBloc, "Succès ! Réponse attendue : <b>" + data.tests[i].out + "</b>. Réponse reçue : <b>" + res + "</b>", true);
+						}else{
+							logResult(currentBloc, "Echec.<br>Paramètre(s) : <b>" + data.tests[i].in.toString() +"</b>.<br>Réponse attendue : <b>" + data.tests[i].out + "</b>.<br>Réponse reçue : <b>" + res + "</b>", false)
+							stop = true;
+							return;
+						}
+				}
+			}
+
+			function correct(){
+				testIt({
+					exname		: "Return",
+					fname		: 'returnInt',
+					enonce		: "La fonction <i>returnInt</i> doit retourner l'entier 16.",
+					tests		: 
+					[
+						{
+							in 	: [16],
+							out	: 16,
+						}
+					]
+				});
+
+				testIt({
+					exname		: "Les paramètres",
+					fname		: 'multiply',
+					enonce		: "La fonction <i>multiply</i> prendra en paramètre un entier et devra retourner cette entier multiplier par 3.",
+					tests		:
+					[
+						{
+							in 	: [3],
+							out	: 9
+						},
+						{
+							in 	: [7],
+							out	: 21
+						},
+						{
+							in 	: [165123],
+							out	: 495369
+						}
+					]
+				});
+
+				testIt({
+					exname		: "Concaténation",
+					fname		: 'addZ',
+					enonce		: "La fonction <i>addZ</i> prendra en paramètre une chaîne de caractère et devra la retourner suivie du caractère 'Z'.",
+					tests		:
+					[
+						{
+							in 	: ['toto'],
+							out	: 'totoZ'
+						},
+						{
+							in 	: ['patate'],
+							out	: 'patateZ'
+						},
+						{
+							in 	: [''],
+							out	: 'Z'
+						}
+					]
+				});
+
+				testIt({
+					exname		: "Le plus grand",
+					fname		: "biggest",
+					enonce		: "La fonction <i>biggest</i> prendra en paramètre 2 nombres et devra retourner le plus grand. Si les 2 nombres sont égaux, retourner un des deux.",
+					tests		:
+					[
+						{
+							in 	: [20, 10],
+							out	: 20
+						},
+						{
+							in 	: [10, 20],
+							out	: 20
+						},
+						{
+							in 	: [10, 10],
+							out	: 10
+						},
+						{
+							in 	: [0, 1],
+							out	: 1
+						},
+						{
+							in 	: [-20, -10],
+							out	: -10
+						},
+					]
+				});
+
+				testIt({
+					exname		: "La plus grande phrase",
+					fname		: "bigWord",
+					enonce		: "La fonction <i>bigWord</i> prendra en paramètre 2 chaîne de caractères et devra retourner la plus grande. Si la longueur des 2 chaînes sont identiques, la fonction devra retourner la première.",
+					tests		:
+					[
+						{
+							in 	: ["table", "chaise"],
+							out	: "chaise"
+						},
+						{
+							in 	: ["small", "big"],
+							out	: "small"
+						},
+						{
+							in 	: ["bilbon", "frodon"],
+							out	: "bilbon"
+						},
+						{
+							in 	: ["png", "jpg"],
+							out	: "png"
+						}
+					]
+				});
+
+				testIt({
+					exname		: "La prime",
+					fname		: "prime",
+					enonce		: "La fonction <i>prime</i> prendra 2 paramètres en premier un entier représentant le salaire d'un employé et le deuxième un booléen qui représentra le bonus. Si la variable bonus est true alors le salaire sera multiplié par 10. La fonction devra retourner le salaire de l'employé préfixé de '£'.",
+					tests		:
+					[
+						{
+							in 	: [1000, true],
+							out	: "£10000"
+						},
+						{
+							in 	: [50000, false],
+							out	: "£50000"
+						},
+						{
+							in 	: [2,  true],
+							out	: "£20"
+						},
+						{
+							in 	: [56023, false],
+							out	: "£56023"
+						}
+					]
+				});
+
+				testIt({
+					exname		: "Populer un tableau",
+					fname		: "populate",
+					enonce		: "Populer un tableau ou une base de données c'est la remplir de valeur, l'alimenter en données.<br>La fonction <i>populate</i> prendra en paramètre 1 entier et devra retourner un tableau ayant le même nombre d'entrée.<br>Exemple : populate(5) => [0,1,2,3,4].Vous pouvez utiliser une méthode de l'objet <a href='https://mzl.la/2tdttcp'>Array</a>.",
+					tests		:
+					[
+						{
+							in 	: [5],
+							out	: [0,1,2,3,4]
+						},
+						{
+							in 	: [9],
+							out	: [0,1,2,3,4,5,6,7,8]
+						},
+						{
+							in 	: [2],
+							out	: [0,1]
+						},
+						{
+							in 	: [20],
+							out	: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
+						}
+					]
+				});
+
+				testIt({
+					exname		: "Nombre de diviseurs",
+					fname		: "nbDiviseur",
+					enonce		: "La fonction <i>nbDiviseur</i> prendra en paramètre 1 entier et devra retourner son nombre de diviseurs.<br>Exemple : nbDiviseur(5) => 2 les diviseurs sont 1 et 5.<br>Vous pouvez utiliser une méthode de l'objet <a href='https://mzl.la/2tMrei3'>Number</a>.",
+					tests		:
+					[
+						{
+							in 	: [5],
+							out	: 2
+						},
+						{
+							in 	: [4],
+							out	: 3
+						},
+						{
+							in 	: [12],
+							out	: 6
+						},
+						{
+							in 	: [20],
+							out	: 6
+						}
+					]
+				});
+
+				testIt({
+					exname		: "Oeufs dé-brouillés",
+					fname		: "unscrambled",
+					enonce		: "La fonction <i>unscrambled</i> prendra en paramètre 1 chaîne de caractères et devra retourner une chaîne de caractères sans les occurences du mot oeuf.<br>Exemple : unscrambled('doeufioeufx') => dix.<br>Vous pouvez utiliser une méthode de l'objet <a href='https://mzl.la/2vbLs4m'>String</a> et une méthode de l'objet <a href='https://mzl.la/2tdttcp'>Array</a>",
+					tests		:
+					[
+						{
+							in 	: ["doeufioeufx"],
+							out	: "dix"
+						},
+						{
+							in 	: ["coeufhoeufaoeufioeufsoeufe"],
+							out	: "chaise"
+						},
+						{
+							in 	: ["joeufaoeufvoeufaoeufsoeufcoeufroeufioeufpoeuft"],
+							out	: "javascript"
+						},
+						{
+							in 	: ["boeufaoeuftoeufmoeufaoeufn"],
+							out	: "batman"
+						}
+					]
+				});
+
+				testIt({
+					exname		: "Miroir",
+					fname		: "mirror",
+					enonce		: "La fonction <i>mirror</i> prendra en paramètre 1 chaîne de caractères et devra la retourner inversée.<br>Exemple : mirror('test') => tset.<br>Vous pouvez utiliser une méthode de l'objet <a href='https://mzl.la/2vbLs4m'>String</a> et deux méthodes de l'objet <a href='https://mzl.la/2tdttcp'>Array</a>.",
+					tests		:
+					[
+						{
+							in 	: ["test"],
+							out	: "tset"
+						},
+						{
+							in 	: ["game"],
+							out	: "emag"
+						},
+						{
+							in 	: ["javascript"],
+							out	: "tpircsavaj"
+						},
+						{
+							in 	: ["batman"],
+							out	: "namtab"
+						}
+					]
+				});
+			}
+
+			correct();
+		})(document, window)
+	</script>
+</body>
+</html>

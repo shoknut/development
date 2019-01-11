@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<title>Ardoise Magique</title>
+</head>
+<body>
+	<h1><i class="fas fa-paint-brush"></i> Ardoise Magique =)</h1>
+
+	<canvas width="800" height="600" id="canvas"></canvas>
+	<canvas width="320" height="320" id="colorPicker"></canvas>
+
+	<section>
+		<div id="outil">
+			<label>Outil</label>
+			<button type="button" id="eraser"><i class="fas fa-eraser"></i></button>
+			<button type="button" id="dropper"><i class="fas fa-eye-dropper"></i></button>
+		</div>
+
+		<div id="color">
+			<label for="color">Couleurs</label>
+			<button type="button" class="color" value="black" style="background-color: black;color:white;">Black</button>
+			<button type="button" class="color" value="brown" style="background-color: brown;">Brown</button>
+			<button type="button" class="color" value="red" style="background-color: red;">Red</button>
+			<button type="button" class="color" value="yellow" style="background-color: yellow;">Yellow</button>
+			<button type="button" class="color" value="limegreen" style="background-color: limegreen;">Limegreen</button>
+			<button type="button" class="color" value="lightblue" style="background-color: lightblue;">Lightblue</button>
+			<button type="button" class="color" value="blue" style="background-color: blue;">Blue</button>
+
+		</div>
+
+		<div id="size">
+			<label>Epaisseur</label>
+			<button type="button" class="thickness" value="1">Fin</button>
+			<button type="button" class="thickness" value="5">Normal</button>
+			<button type="button" class="thickness" value="10">Epais</button>
+		</div>
+	</section>
+
+	
+	<script src="colorPicker.js"></script>
+	<script src="pen.js"></script>
+	<script src="ardoise.js"></script>
+	<script src="main.js"></script>	
+</body>
+</html>

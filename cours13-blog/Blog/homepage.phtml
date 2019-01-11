@@ -1,0 +1,30 @@
+<html>
+<head>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+<?php 
+	session_start();
+if(!isset($_SESSION["username"])): ?>
+	<a href="login.php">Login</a>
+	<a href="inscription.php">Subscribe</a>
+<?php else: ?>
+	<?= "Bonjour ".$_SESSION["username"]; ?>
+	<?php if($_SESSION["role"] == "admin"): ?>
+		<a href="administration.php">Administration panel</a>
+	<?php endif; ?>
+		<input type="text" id="search" name="search"/>
+		<a href="deconnexion.php">Disconnect</a>
+<?php endif; ?>
+	<div id="target"></div>
+	<?php foreach($posts as $post): ?>
+		<p><a href="showArticle.php?articleID=<?= $post["id"];?>"> <?= $post["Title"]; ?></a> </p>
+		<p> <?= $post["Contents"]; ?> </p>
+	<?php endforeach;?>
+
+	<script src="index.js"></script>
+</body>
+</html>

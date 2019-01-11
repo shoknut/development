@@ -1,0 +1,54 @@
+<!-- Page administrateur -->
+
+<h2>Carte du restaurant</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Quantité</th>
+            <th>Prix Unitaire</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php foreach($meals as $meal): ?>
+
+        <tr>
+            <td><?= $meal["Name"] ?> </td>
+            <td><?= $meal["Photo"] ?> </td>
+            <td><?= $meal["Description"] ?> </td>
+            <td><?= $meal["QuantityInStock"] ?> </td>
+            <td><?= $meal["BuyPrice"] ?> </td>
+            <td><?= $meal["SalePrice"] ?> €</td>
+            <td><a href="<?=$requestUrl?>/admin"><i class="fas fa-trash-alt"></i></a></td>
+        </tr>
+    <?php endforeach;?>
+    </tbody>
+</table>
+
+<form action="<?=$requestUrl?>/admin" method="post">
+    <fieldset>
+        <legend>Nouveau produit</legend>
+        <label for="Name">Nom du produit</label>
+        <input type="text" name="Name">
+
+        <label for="photo">Photo</label>
+        <input type="text" name="Photo">
+
+        <label for="description">Description</label>
+        <textarea name="Description" id="description" cols="30" rows="10"></textarea>
+
+        <label for="qte">Quantité stock</label>
+        <input type="text" name="QuantityInStock">
+
+        <label for="prixAchat">Prix d'achat</label>
+        <input type="text" name="BuyPrice">
+
+        <label for="prixVente">Prix unitaire</label>
+        <input type="text" name="SalePrice">
+
+
+        <button type="submit">Valider</button>
+    </fieldset>
+</form>

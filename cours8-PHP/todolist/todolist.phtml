@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css?family=Charmonman|Allan" rel="stylesheet">
+	<link rel="stylesheet" href="todolist.css">
+	<title>To Do List</title>
+</head>
+<body>
+	<header>
+		<h1>Ma todolist :)</h1>
+	</header>
+	<main class="container">
+		<form action="remove.php" method="post">
+			<p> <?php 
+				include "loadTask.php";
+				if(!empty($tab)) : ?>
+					<?php foreach($tab as $index => $value) :?>
+						<!-- <?= $index; ?> -->
+						<p><input type="checkbox" name="radio" value="<?= $index; ?>"> <?= $value[0]." ".$value[1]; ?> </p>
+					<?php endforeach; ?>
+				<?php endif; ?>
+			
+			</p>
+			<input class="supp" type="submit" value="Supprimer">
+			
+		</form>
+		<form action="addTask.php" method="POST">
+			<ul>
+				<fieldset>
+					<legend>Informations sur la tâche</legend>
+					<li>
+						<label for="">Titre : </label>
+						<input type="text" name="titre" value="">
+					</li>
+					<li class="describe">
+						<label for="">Description : </label>
+						<textarea name="description" id="description" cols="30" rows="10"></textarea>
+					</li>
+					<li>
+						<label name='date' for="">Date de fin : 
+
+						<?php 
+							include "date.php";
+						?> 
+						</label>
+						
+					</li>
+					<li>
+						<label for="">Priorité : </label>
+						<input type="radio" name="priority" value="basse"> Basse
+						<input type="radio" name="priority" value="normale"> Normale
+						<input type="radio" name="priority" value="haute"> Haute
+					</li>
+					<li class="add">
+						<button type="submit">Ajouter</button>
+					</li>
+				</fieldset>
+			</ul>
+
+		</form>
+	</main>
+	<script href="check.js"></script>
+	
+</body>
+</html>

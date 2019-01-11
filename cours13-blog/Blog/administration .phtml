@@ -1,0 +1,15 @@
+<html>
+<body>
+	<table>
+	<?php foreach($posts as $post):?>
+		<tr>
+		<td><?= $post["Title"]; ?></td>
+		<td><?= substr($post["Contents"], 0, 10); ?></td>
+		<td><?= $post["CreationTimestamp"]; ?></td>
+		<td><?= $post["FirstName"]; ?></td>
+		<td><?= $post["Name"]; ?></td>
+		</tr>
+	<?php endforeach;?>
+	</table>
+</body>
+</html>

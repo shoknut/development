@@ -1,0 +1,71 @@
+<!-- Page de validation -->
+
+
+<h2><i class="fas fa-check"></i> Payer la commande</h2>
+
+<div class="contactInfo">
+    <h3 class="clientInfo">
+        <?=$_SESSION["lastName"]. " " .$_SESSION["firstName"];?>
+    </h3>
+    <h3> <?=$_SESSION["address"];?></h3>
+    <h3> <?=$_SESSION["zipCode"];?></h3>
+    <h3> <?=$_SESSION["city"];?></h3>
+</div>
+
+<caption>Récapitulatif de la commande</caption>
+
+<table id="recap">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Quantité</th>
+            <th>Prix unitaire</th>
+            <th>Prix total</th>
+        </tr>
+    </thead>
+
+    <?php $montantHT = 0; ?>
+    <?php foreach($validate as $detail): ?>
+
+    <tbody id="panier">
+        <tr>
+            <td><img src="<?=$wwwUrl?>/images/meals/<?=$detail["Photo"]?>"><?=$detail["Name"]?></td>
+            <td><?=$detail["quantityOrdered"]?></td>
+            <td><?=$detail["priceEach"]?> €</td>
+            <td><?=$detail["quantityOrdered"]*$detail["priceEach"]?> €</td>
+        </tr>
+    </tbody>
+    <?php endforeach;?>
+
+    <tfooter id="montant">
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Montant HT : </td>
+            <td style="color:#f70202; font-weight: bold;"><?= number_format($validate[0]["totalPrice"],2); ?> €</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Montant TVA 20% :</td>
+            <td style="color:#f70202; font-weight: bold;"><?= $TVA=number_format($validate[0]["totalPrice"]*0.2,2); ?> €</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td>Montant TTC : </td>
+            <td style="color:#f70202; font-weight: bold;"><?= number_format($validate[0]["totalPrice"]+$TVA,2); ?> €</td>
+        </tr>
+
+    </tfooter>
+</table>
+
+<small>Commandé le <?=$_SESSION["orderDate"];?>  </small>
+
+<hr>
+
+<p>Merci de bien vouloir procéder au paiement de la commande</p>
+
+<button type="button" id="payer"><a href="<?= $requestUrl?>/payment">Payer</a></button>
+
+<button type="button"><a href="<?= $requestUrl?>">Annuler</a></button>

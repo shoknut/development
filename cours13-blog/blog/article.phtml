@@ -1,0 +1,41 @@
+<?php
+
+include "header.php";
+
+?>
+
+	<main>
+		<section>
+			<h1><i class="fas fa-file-alt"></i> Article</h1>
+			<p><a href="homePage.php"><i class="fas fa-reply"></i> Retour à l'accueil</a></p>
+			<img src="images/portrait.jpg" alt="portrait">
+		</section>
+		<article>
+			<h3><?=$post["title"]?></h3>
+			<p><?=$post["content"]?></p>
+			<p class="redac">Rédigé par <?=$post["firstName"]." ".$post["lastName"]." "."le"." ".$post["creationTime"]?></p>
+			<p class="cat">Catégorie <?=$post["name"]?></p>
+		</article>
+		<article>
+			<?php foreach ($comments as $comment) : ?>
+				<p class="redac">Rédigé par <?=$comment["nickname"] . " ". "le " . $comment["creationTime"]?></p>
+				<p class="com"><?=$comment["content"]?></p>
+			<?php endforeach; ?>
+				
+		</article>
+ 		<?php if(isset($_SESSION["user"])): ?>
+			<form action="addComment.php?numeroArticle=<?=$article?>" method="post">
+				<fieldset>
+					<legend><i class="fas fa-comment"></i> Nouveau commentaire</legend>
+					<label for="pseudo">Pseudo : </label>
+					<input type="text" id="pseudo" name="pseudo">
+					<label for="commentaire">Commentaire : </label>
+					<textarea name="commentaire" id="commentaire" cols="30" rows="10"></textarea>
+					<div class="button">
+						<button type="submit" id="add">Ajouter</button>
+						<a href="homePage.php" id="cancel">Annuler</a>
+					</div>
+				</fieldset>
+			</form>	
+		<?php endif; ?>	
+	</main>

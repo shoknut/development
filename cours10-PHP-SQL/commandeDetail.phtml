@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Courgette|Handlee" rel="stylesheet">
+    <link rel="stylesheet" href="style1.css">
+    <title>Détail de la commande</title>
+</head>
+<body>
+    <header>
+        <h1 class="cde">Bons de commande</h1>
+        <h2 class="accueil"><a href="commande.php">Retourner à l'accueil</a></h2>
+    </header>
+    <main>
+        <div class="contactInfo">
+            <h1 class="societe"> <?=$client["customerName"]?></h1>
+            <h2 class="client"> <?=$client["contactLastName"]. " " .$client["contactFirstName"]?></h2>
+            <h3> <?=$client["addressLine1"]?></h3>
+            <h3> <?=$client["addressLine2"]?></h3>
+            <h3> <?=$client["city"]?></h3>
+        </div>
+        <h2 class="boncde">Bon de commande n°<?=$client["orderNumber"]?></h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Produits</th>
+                    <th>Prix unitaire</th>
+                    <th>Quantité</th>
+                    <th>Prix total</th>
+                </tr>
+            </thead>
+
+            <?php $montantHT = 0; ?>
+            <?php foreach($detailCommande as $detail): ?>
+                <?php $montantHT += $detail["totalPrice"]; ?>
+            <tbody>
+                <tr>
+                    <td><?=$detail["productName"]?></td>
+                    <td><?=$detail["priceEach"]?> €</td>
+                    <td><?=$detail["quantityOrdered"]?></td>
+                    <td><?=$detail["totalPrice"]?> €</td>
+                </tr>
+            </tbody>
+            <?php endforeach;?>
+            <tfooter>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Montant HT : </td>
+                    <td style="color:#f70202; font-weight: bold;"><?= number_format($montantHT,2); ?> €</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Montant TVA 20% :</td>
+                    <td style="color:#f70202; font-weight: bold;"><?= $TVA=number_format($montantHT*0.2,2); ?> €</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Montant TTC : </td>
+                    <td style="color:#f70202; font-weight: bold;"><?= number_format($montantHT+$TVA,2); ?> €</td>
+                </tr>
+            </tfooter>
+        </table>
+
+    </main>
+
+
+
+</body>
+</html>

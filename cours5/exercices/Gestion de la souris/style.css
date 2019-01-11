@@ -1,0 +1,31 @@
+.rectangle {
+	height: 300px;
+	width: 400px;
+	background-color: royalblue;
+	border-radius: 8px;
+}
+
+.rectangleGood {
+	height: 300px;
+	width: 400px;
+	background-color: limegreen;
+	border-radius: 8px;
+}
+
+.rectangleImportant {
+	height: 300px;
+	width: 400px;
+	background-color: firebrick;
+	border-radius: 8px;
+}
+
+.hide {
+	display: none;
+}
+
+#toggle-rectangle {
+	padding: 1em;
+	border-radius: 2em;
+	background-image: linear-gradient(45deg, yellow, orange, red);
+	
+}

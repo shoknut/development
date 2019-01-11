@@ -1,0 +1,39 @@
+<?php
+
+include "header.php";
+
+?>
+
+<main>
+	<section class="entete">
+		<h1><i class="fas fa-home"></i> Accueil</h1>
+		<img src="images/portrait.jpg" alt="portrait">
+	</section>
+
+	<form>
+		<fieldset>
+            <legend>Search Bar</legend>
+            <ul>
+                <li>
+                    <input type="text" id="autocompletion" name="search" placeholder="Search">
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+    <div id="target">
+    	<p>Résultat de la recherche :</p>
+    </div>
+	<?php if(isset($_SESSION["user"])): ?>
+		<section>
+			<?php foreach($posts as $post): ?>
+				<h3><a href="article.php?numeroArticle=<?=$post["id"]?>"><?=$post["title"]?></a></h3>
+				<p><?=substr($post["content"],0,20)." "."[...]"?></p>
+				<p class="redac">Rédigé par <?=$post["firstName"]." ".$post["lastName"]." "."le"." ".$post["creationTime"]?></p>
+				<p class="cat">Catégorie <?=$post["name"]?></p>
+			<?php endforeach; ?>
+	<?php endif; ?>	
+		<p>Le blog des élèves de la 3W Academy</p>
+	</section>
+</main>
+<script src="search.js"></script>
+

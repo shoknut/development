@@ -1,0 +1,33 @@
+<?php
+
+include "header.php";
+
+?>
+
+<main>
+	<section class="entete">
+		<h1><a href="homePage.php"><i class="fas fa-home"></i> Accueil</a></h1>
+		<img src="images/portrait.jpg" alt="portrait">
+	</section>
+	
+	
+		<form action="connexion.php" method="post">
+			<fieldset>
+				<legend>Connexion au compte</legend>
+				<label for="pseudo">Pseudo : </label>
+				<input type="text" name="pseudo" required>
+
+				<label for="password">Mot de passe :</label>
+				<input type="password" name="password" required>
+
+				<div class="button">
+					<button type="submit" id="add">Valider</button>
+					<a href="homePage.php" id="cancel">Annuler</a>
+				</div>
+			</fieldset>
+			
+			<?= $erreur; ?>
+
+		</form>
+	
+</main>	

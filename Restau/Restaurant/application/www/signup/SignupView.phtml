@@ -1,0 +1,36 @@
+<form class="generic-form" action="<?= $requestUrl ?>/signup" method="POST">
+    <input type="text" name="firstName">
+    <input type="text" name="lastName">
+    <input type="text" name="email">
+    <input type="password" name="password">
+    <select name="day">
+        <?php for($i = 1; $i <= 31; $i++): ?>
+            <option value="<?= $i ?>"><?= $i ?></option>
+        <?php endfor; ?>
+    </select>
+    <select name="month">
+        <option value="1">Janvier</option>
+        <option value="2">Fevrier</option>
+        <option value="3">Mars</option>
+        <option value="4">Avril</option>
+        <option value="5">Mai</option>
+        <option value="6">Juin</option>
+        <option value="7">Juillet</option>
+        <option value="8">Août</option>
+        <option value="9">Septembre</option>
+        <option value="10">Octobre</option>
+        <option value="11">Novembre</option>
+        <option value="12">Decembre</option>
+    </select>
+    <select name="year">
+        <?php for($year = 2000; $year <= 2018; $year++): ?>
+            <option value="<?= $year ?>"><?= $year ?></option>
+        <?php endfor; ?>
+    </select>
+    <input type="text" name="address">
+    <input type="text" name="city">
+    <input type="text" name="zipcode">
+    <input type="text" name="country">
+    <input type="text" name="phone">
+    <input type="submit">
+</form>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Carnet d'adresses</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+	<link href="https://fonts.googleapis.com/css?family=Cookie|Rancho" rel="stylesheet">
+	<link rel="stylesheet" href="address.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<header>
+		<h1><i class="fas fa-book rotate-45-right"> </i> Carnet d'Adresses</h1>
+	</header>
+	<main>
+		<div class="button">
+			<button id="plus" type="button"><i class="fas fa-plus fa-2x"></i></button>
+			<button id="supp" type="button"><i class="fas fa-trash-alt fa-2x"></i></button>
+		</div>
+
+		<form id="contact-form" method="post">
+			<ul>
+			<fieldset>
+			<legend>Formulaire de contact</legend>
+				<li>
+					<label for="civility" id="civil">Civilité : </label>
+					<select id="civility" name="civility" class="edit">
+						<option value="choix">Civilité</option>
+						<option id="madame" value="madame">Madame</option>
+						<option id="mademoiselle" value="mademoiselle">Mademoiselle</option>
+						<option id="monsieur" value="monsieur">Monsieur</option>
+					</select>
+				</li>
+				<li>
+					<label for="nom">Nom : </label>
+					<input id="lastName" type="text" name="lastName" class="edit" placeholder="lastname">
+				</li>
+				<li>
+					<label for="prenom">Prénom : </label>
+					<input id="firstName" type="text" name="firstName" class="edit" placeholder="firstname">
+				</li>
+				<li>
+					<label for="phone">Téléphone : </label>
+					<input id="phone" type="tel" name="phone" class="edit" placeholder="phone number">
+				</li>
+			</ul>
+			<button id="save" type="button">Enregistrer</button>
+			</fieldset>
+
+		</form>
+		
+		<section id="contacts">
+			<ul id="contact">
+				<div id="description" onClick="OnClickEditContact()"></div>
+				
+				
+			</ul>
+		</section>
+	</main>
+
+	<script src="address.js"></script>	
+</body>
+</html>

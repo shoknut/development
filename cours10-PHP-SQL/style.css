@@ -1,0 +1,52 @@
+* {
+    box-sizing: border-box;
+
+}
+
+body {
+    width: 1300px;
+    margin: 0 auto;
+}
+
+h1, th {
+    color: #00948a;
+    font-family: "Courgette";
+}
+
+
+h2, table {
+    text-align: center;
+    width: 100%;
+    font-family: "Handlee";
+}
+
+a {
+    background: none;
+    text-decoration: none;
+    color: firebrick;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+
+td,th {
+
+    padding: 8px;
+}
+
+tr {
+    background: #c1f4f0;
+
+}
+
+tr:nth-child(even) {
+    background: #82cec8;
+}
+
+tr:hover {
+    background: #23eddc;
+}
+
+

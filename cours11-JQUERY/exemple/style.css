@@ -1,0 +1,11 @@
+.rectangle
+{
+   /* structure */
+   height: 300px;
+   width: 400px;
+
+   /* presentation */
+   background-color: royalblue;
+   border-radius: 8px;
+   transition: background-color 0.8s;
+}

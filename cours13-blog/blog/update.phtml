@@ -1,0 +1,29 @@
+<?php
+
+include "header.php";
+
+?>
+
+<main>
+	<section>
+		<h1><i class="fas fa-file-alt"></i> Article</h1>
+		<p><a href="homePage.php"><i class="fas fa-reply"></i> Retour à l'accueil</a></p>
+	</section>
+
+	<form action="update.php?numeroArticle=<?=$update?>" method="post">
+		<fieldset>
+			<legend><i class="fas fa-file"></i> Nouvel article</legend>
+			<label for="titre">Titre : </label>
+			<input type="text" id="titre" name="titre" value="<?=$showArticle["title"]?>">
+				
+			<label for="article">Article : </label>
+			<textarea name="article" id="article" cols="30" rows="10" ><?=$showArticle["content"]?></textarea>
+
+			<div class="button">
+				<button type="submit" id="add">Enregistrer</button>
+				<a href="admin.php" id="cancel">Annuler</a>
+			</div>
+		</fieldset>
+	</form>		
+</main>	
+

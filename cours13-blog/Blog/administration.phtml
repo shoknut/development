@@ -1,0 +1,18 @@
+<html>
+<body>
+<a href="addArticle.php">Rediger un nouvel article</a>
+	<table>
+	<?php foreach($posts as $post):?>
+		<tr>
+		<td><?= $post["Title"]; ?></td>
+		<td><?= substr($post["Contents"],0,100)."[...]"; ?></td>
+		<td><?= $post["CreationTimestamp"]; ?></td>
+		<td><?= $post["FirstName"]; ?></td>
+		<td><?= $post["Name"]; ?></td>
+		<td><a href="edit.php?numeroArticle=<?=$post["Id"]?>">editer l'article</a></td>
+		<td><a href="delete.php?numeroArticle=<?=$post["Id"]?>">supprimer l'article</a></td>
+		</tr>
+	<?php endforeach;?>
+	</table>
+</body>
+</html>

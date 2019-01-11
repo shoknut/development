@@ -1,0 +1,32 @@
+body {
+	width: 800px;;
+	margin: 0 auto;
+}
+
+em {
+	font-weight: bold;
+	font-style: italic;
+	color: red;
+}
+
+ul {
+	display: inline-flex;
+	flex-wrap: wrap;
+}
+
+ul li {
+	display: flex;
+	margin: 1em;
+	padding: 0.5em;
+}
+
+.hover {
+	border: 0.5em solid silver;
+	border-radius: 1em;
+	
+}
+
+.selected {
+	border: 0.5em solid forestgreen;
+	border-radius: 1em;
+}

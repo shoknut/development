@@ -1,0 +1,46 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	width: 1100px;
+	margin: 0 auto;
+}
+
+h1 {
+	text-align: center;
+	color: #0ddbdb;
+}
+
+h3{
+	color: "red";
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	width: 50%;
+	position: relative;
+	left: 250px;
+	text-align: center;
+	padding: 1em;
+}
+
+hr {
+	margin-top: 2em;
+}
+
+button {
+	width: 20%;
+	padding: 1em;
+	margin: 1em;
+	position: relative;
+	left: 200px;
+	border-radius: 10px;
+	background-color: cyan;
+}
+
+label, input {
+	padding: 1em;
+}
+

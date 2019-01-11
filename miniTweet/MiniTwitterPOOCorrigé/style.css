@@ -1,0 +1,18 @@
+#container{
+    width: 50%;
+    margin: 50 auto;
+}
+
+#tweetContainer{
+    width: 50%;
+    margin: 50 auto;
+
+}
+i{
+    float:right;
+}
+.inline{
+    width: 50%;
+    margin: 50 auto;
+
+}
